@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../fx.js"> </script>
+</head>
+<body>
+    <script> //8.추억의 별 그리기 , 구구단 
+    const join = sep => _.reduce((a, b) => `${a}${sep}${b}`);
+        _.go(
+            _.range(1,6), //5까지의 범위가 iterable 하니까 하나씩 출력이 가능한거임.
+            //별을 1개부터 그리기  1~5 까지의 범위를 의미함 사실상.
+            _.map(_.range), // 객체화 시키기
+            _.map(_.map(_=>'*')), //지금 숫자로 나와있는 부분의 요소가 어지러워서 
+            // 숫자대신 값을 할당해준거임 *이라는 . 
+            _.map(_.reduce((a,b)=>`${a}${b}`)),//reduce에 넣고 아무것도 없이그냥 
+            //만약 a와 b라는 값이 있다면 그 두값을 "concat" 해줬다고 생각하면됨 . 아무것도 없게
+            _.reduce((a,b)=>`${a}\n${b}`), // 객체 단위로 쪼개지기 떄문에
+            //한객체 * // ** // *** /// **** ///*****로 나눠진다
+            // 어떠한 요소가 이해가안되면 무조건 iterable 하다고 생각해서 잘해보자.
+            console.log);
+
+        //--구구단 만드는 코드
+        _.go(
+            _.range(2,10) //iterable한 객체기 떄문에 
+            // 사실상 it.next처럼 한개씩 증가해서 2 3 4 567 8 9 10 출력함.
+            ,_.map(a=>_.go( // 이중 for문처럼 go가 들어오면 
+                _.range(1,10),// 1부터 10까지 
+                _.map(b=>`${a}x${b}=${a*b}`),
+                join('\n')
+            )),
+            join('\n\n'),
+            console.log); // map으로 하나의 객체를 만들어준것과 같음.
+        
+        /*
+            for(i=2;i<10;i++)
+                for(j=1;j<10;j++) 과같음. 주된것은 객체.
+        */
+        
+    
+    
+        </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../fx.js"> </script>
+</head>
+<body>
+    <script>
+        //1. 홀수 n개 더하기
+        function f1(limit,list)
+        {   let acc=0;
+            for(const a of list) //list를 모두 순회한다고 가정할때. for of 문.
+            {
+                if(a%2) //2로 나눈나머지가 1이면 이라는 의미 1은 true 0은 false
+                {   const b=a*a; //a는 list의수
+                    acc+=b;
+                    console.log(a);// 홀수를 거르는거임. 
+                    if(--limit ==0) break;  // limit 값이  2 1 
+                    //--limit는 수를 감소시키고 의 값을 반환함 그니까 2부터시작
+                }
+                
+            }
+            console.log(acc);
+        }
+        f1(5,[1,2,3,4,5,6,7,8,9,10]); //f1함수의 인자로 n개의 홀수를 꺼내서 그값들의
+        //제곱을 더하는 code.
+    </script>
+
+<script>
+    //함수로 추상화 되어있으면 함수형 프로그래밍 = 이터러블 프로그래밍.
+    function f2(limit,list)
+    {   let acc=0;
+        for(const a of L.filter(a=>a%2,list)) { //(a,b) b라는 리스트에서 a라는 조건을 이용해서 값을 찾아라
+            //if(a%2) 대신에 L.filter 함수를 이용해서 한줄로 표현하게된다면. 처리
+            //가 편리해짐.
+        
+        {
+            if(a%2) // if가 한번만 있는 fliter로 대체해보자
+            {   const b=a*a; 
+                acc+=b;
+                console.log(a);
+                if(--limit ==0) break;   
+                
+            }
+            
+        }
+    }
+        console.log(acc);
+    }
+    f2(5,[1,2,3,4,5,6,7,8,9,10]); 
+    
+</script>
+
+    
+</script>
+</body>
+</html>
